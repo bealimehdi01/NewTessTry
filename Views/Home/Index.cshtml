@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "OCR Upload";
+}
+
+<h2>Upload Image or PDF for OCR</h2>
+
+<!-- Form for Image Upload -->
+<form asp-controller="Ocr" asp-action="UploadImage" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="imageFile">Select Image:</label>
+        <input type="file" id="imageFile" name="file" accept="image/*" required />
+    </div>
+    <div>
+        <label for="outputFormatImage">Output Format:</label>
+        <select id="outputFormatImage" name="outputFormat">
+            <option value="json">JSON</option>
+            <option value="xml">XML</option>
+        </select>
+    </div>
+    <button type="submit">Upload Image</button>
+</form>
+
+<hr />
+
+<!-- Form for PDF Upload -->
+<form asp-controller="Ocr" asp-action="UploadPdf" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="pdfFile">Select PDF:</label>
+        <input type="file" id="pdfFile" name="file" accept="application/pdf" required />
+    </div>
+    <div>
+        <label for="outputFormatPdf">Output Format:</label>
+        <select id="outputFormatPdf" name="outputFormat">
+            <option value="json">JSON</option>
+            <option value="xml">XML</option>
+        </select>
+    </div>
+    <button type="submit">Upload PDF</button>
+</form>
+
+<hr />
+
+<!-- Diagram Representation -->
+<h3>How It Works</h3>
+<div class="diagram">
+    <div class="step">
+        <div class="box">User Uploads File</div>
+        <div class="arrow">↓</div>
+    </div>
+    <div class="step">
+        <div class="box">Server Receives File</div>
+        <div class="arrow">↓</div>
+    </div>
+    <div class="step">
+        <div class="box">Process File</div>
+        <div class="arrow">↓</div>
+    </div>
+    <div class="step">
+        <div class="box">Extract Text</div>
+        <div class="arrow">↓</div>
+    </div>
+    <div class="step">
+        <div class="box">Return Text in JSON/XML</div>
+    </div>
+</div>
+
+<style>
+.diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin: 5px 0;
+}
+.arrow {
+    font-size: 24px;
+    margin: 5px 0;
+}
+</style>
